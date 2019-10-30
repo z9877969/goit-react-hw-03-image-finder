@@ -1,20 +1,25 @@
-import React from "react";
-// import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import style from './Modal.module.css';
 
-const Modal = props => (
-  <div className="overlay">
-    <div className="modal">
-      <img src="" alt="" />
+const Modal = ({ id, getItemById, query }) => {
+  return (
+    <div data-id="modal" className={style.overlay}>
+      <div className={style.modal}>
+        <img src={getItemById(id).largeImageURL} alt={query} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-// Modal.propTypes = {
-//   // bla: PropTypes.string,
-// };
+Modal.propTypes = {
+  id: PropTypes.string.isRequired,
+  getItemById: PropTypes.func.isRequired,
+  query: PropTypes.string,
+};
 
-// Modal.defaultProps = {
-//   // bla: 'test',
-// };
+Modal.defaultProps = {
+  query: 'queried image',
+};
 
 export default Modal;
